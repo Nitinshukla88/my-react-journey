@@ -1,0 +1,14 @@
+{
+  "name": "chapter-01",
+  "version": "1.0.0",
+  "description": "This is the first episode of learning react",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Nitin shukla",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
