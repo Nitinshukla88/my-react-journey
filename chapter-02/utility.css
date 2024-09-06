@@ -9,6 +9,10 @@
     justify-content: space-between;
 }
 
+.logo{
+    margin-left: 10px;
+}
+
 .logo-img{
     height: 90px;
     width: 90px;
@@ -17,9 +21,37 @@
 .nav-items > ul {
     display: flex;
     list-style-type: none;
+    margin-right: 20px;
 }
 
 .nav-items > ul > li {
-    margin: 10px;
+    margin: 20px;
     padding: 10px;
+    font-size: 1.2rem;
+}
+
+.card-img{
+    height: 150px;
+    width: 200px;
+    padding: 10px;
+}
+
+.res-container{
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.rest-card{
+    width: 200px;
+    margin: 12px;
+    background-color: #f0f0f0;
+}
+
+.rest-card:hover{
+    border: 1px solid black;
+}
+
+h4{
+    margin: 5px;
 }
