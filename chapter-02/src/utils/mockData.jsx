@@ -75,7 +75,7 @@ const restDetails = [
         areaName: "Vidhansabha Marg",
         costForTwo: "₹300 for two",
         cuisines: ["Thalis", "North Indian", "Chinese", "Biryani"],
-        avgRating: 4.1,
+        avgRating: 3.8,
         parentId: "473114",
         avgRatingString: "4.1",
         totalRatingsString: "7.6K+",
@@ -118,7 +118,7 @@ const restDetails = [
         restaurantOfferPresentationInfo: {},
         externalRatings: {
           aggregatedRating: {
-            rating: "4.2",
+            rating: "3.8",
             ratingCount: "8.7K+",
           },
           source: "GOOGLE",

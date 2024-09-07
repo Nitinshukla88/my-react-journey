@@ -7,17 +7,6 @@ import Body from "./components/Body";
 
 //<---------------------------------------------------------------------------------------->
 
-// Header componet
-
-
-// card component
-
-
-
-// Body component
-
-
-
 const Applayout = () => {
   return (
     <div className="outer-cont">
