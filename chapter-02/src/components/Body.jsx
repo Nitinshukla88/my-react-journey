@@ -30,12 +30,23 @@ const Body = () => {
     <div className="body">
       <div className="filter">
         <div className="search">
-          <input type="text" placeholder="Enter keyword" className="search-box" value = {searchText} onChange={(e) =>{
-            setSearchText(e.target.value);
-          }}/>
-          <button className="search-btn" onClick={() => {
-            console.log(searchText);
-          }}>Search</button>
+          <input
+            type="text"
+            placeholder="Enter keyword"
+            className="search-box"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
+          <button
+            className="search-btn"
+            onClick={() => {
+              console.log(searchText);
+            }}
+          >
+            Search
+          </button>
         </div>
         <button
           id="btn"
