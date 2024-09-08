@@ -3,8 +3,8 @@ import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
 
 const Body = () => {
-  let [restaurantList, setrestaurantList] = useState([]); // Local state variable
-  console.log(restaurantList);
+  const [restaurantList, setrestaurantList] = useState([]); // Local state variable
+  const [searchText, setSearchText] = useState([""]);
 
   useEffect(() => {
     fetchData();
@@ -17,17 +17,26 @@ const Body = () => {
 
     let jsonData = await data.json();
     console.log(jsonData);
-    setrestaurantList(jsonData?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+    setrestaurantList(
+      jsonData?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+    // Optional chaining done in the above line
   };
 
-  if(restaurantList.length === 0){
-    return (
-      <Shimmer />
-    )
-  }
-  return (
+  return restaurantList.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input type="text" placeholder="Enter keyword" className="search-box" value = {searchText} onChange={(e) =>{
+            setSearchText(e.target.value);
+          }}/>
+          <button className="search-btn" onClick={() => {
+            console.log(searchText);
+          }}>Search</button>
+        </div>
         <button
           id="btn"
           onClick={() => {
