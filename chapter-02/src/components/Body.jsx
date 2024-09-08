@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 
 const Body = () => {
   const [restaurantList, setrestaurantList] = useState([]); // Local state variable
+  const [filteredrestaurants, setfilteredrestaurants] = useState([]);
+  console.log(restaurantList);
   const [searchText, setSearchText] = useState([""]);
 
   useEffect(() => {
@@ -21,6 +23,8 @@ const Body = () => {
       jsonData?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
         ?.restaurants
     );
+    setfilteredrestaurants(jsonData?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
+      ?.restaurants);
     // Optional chaining done in the above line
   };
 
@@ -42,7 +46,12 @@ const Body = () => {
           <button
             className="search-btn"
             onClick={() => {
-              console.log(searchText);
+              let filteredVenues = restaurantList.filter((eachItem)=>{
+                if(eachItem?.info?.cuisines?.includes(searchText) === true){
+                  return eachItem;
+                }
+              });
+              setfilteredrestaurants(filteredVenues);
             }}
           >
             Search
@@ -61,7 +70,7 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {restaurantList.map((resturant, index) => (
+        {filteredrestaurants.map((resturant, index) => (
           <CardCompoent key={resturant.info.id} resdata={resturant} />
         ))}
       </div>
