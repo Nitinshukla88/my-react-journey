@@ -28,6 +28,7 @@
     margin: 20px;
     padding: 10px;
     font-size: 1.2rem;
+    color: purple;
 }
 
 .card-img{
@@ -44,8 +45,9 @@
 
 .rest-card{
     width: 200px;
-    margin: 12px;
+    margin: 30px;
     background-color: #f0f0f0;
+    word-wrap: break-word;
 }
 
 .rest-card:hover{
@@ -64,4 +66,17 @@ h4{
     border: none;
     border-radius: 8px;
     cursor: pointer;
+}
+
+.shimmer-card{
+    height: 300px;
+    width: 200px;
+    margin: 30px;
+    background-color: #f0f0f0;
+    text-align: center;
+    line-height: 270px;
+}
+
+.shimmer-container{
+    display: flex;
 }

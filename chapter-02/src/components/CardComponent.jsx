@@ -2,7 +2,7 @@ import {CDN_URL} from "../utils/constants"
 
 const CardCompoent = (props) => {
     const { resdata } = props;
-    const { name, cuisines } = resdata.info;
+    const { name, cuisines, avgRating, isOpen } = resdata.info;
     return (
       <div className="rest-card">
         <img
@@ -11,8 +11,8 @@ const CardCompoent = (props) => {
         ></img>
         <h4>{name}</h4>
         <h4>{cuisines.join(",")}</h4>
-        <h4>{resdata.info.externalRatings.aggregatedRating.rating} stars</h4>
-        <h4>{resdata.info.availability.opened ? "Open" : "Closed"}</h4>
+        <h4>{avgRating} stars</h4>
+        <h4>{isOpen ? "Open" : "Closed"}</h4>
       </div>
     );
   };
