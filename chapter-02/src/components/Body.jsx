@@ -14,10 +14,10 @@ const Body = () => {
 
   const fetchData = async () => {
     let data = await fetch(
-      "https://www.swiggy.com/mapi/homepage/getCards?lat=26.8756&lng=80.9115"
-    );
-
-    let jsonData = await data.json();
+      "https://proxy.cors.sh/https://www.swiggy.com/mapi/homepage/getCards?lat=26.8756&lng=80.9115"
+    , {headers: {'x-cors-api-key': 'temp_3f27ee6ca5e74b54ff4be8eeaae4260e'}});
+    console.log()
+    const jsonData = await data.json();
     console.log(jsonData);
     setrestaurantList(
       jsonData?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
