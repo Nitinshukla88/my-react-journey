@@ -14,18 +14,18 @@ const Body = () => {
 
   const fetchData = async () => {
     let data = await fetch(
-      "https://proxy.cors.sh/https://www.swiggy.com/mapi/homepage/getCards?lat=26.8756&lng=80.9115"
-    , {headers: {'x-cors-api-key': 'temp_3f27ee6ca5e74b54ff4be8eeaae4260e'}});
-    console.log()
+      "https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.87560&lng=80.91150&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
     const jsonData = await data.json();
     console.log(jsonData);
-    setrestaurantList(
-      jsonData?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-    setfilteredrestaurants(jsonData?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
-      ?.restaurants);
-    // Optional chaining done in the above line
+
+    // Make sure the data you're accessing exists
+    const restaurants =
+      jsonData?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants || [];
+
+    setrestaurantList(restaurants);
+    setfilteredrestaurants(restaurants);
   };
 
   return restaurantList.length === 0 ? (
@@ -46,8 +46,8 @@ const Body = () => {
           <button
             className="search-btn"
             onClick={() => {
-              let filteredVenues = restaurantList.filter((eachItem)=>{
-                if(eachItem?.info?.cuisines?.includes(searchText) === true){
+              let filteredVenues = restaurantList.filter((eachItem) => {
+                if (eachItem?.info?.cuisines?.includes(searchText) === true) {
                   return eachItem;
                 }
               });
@@ -63,15 +63,15 @@ const Body = () => {
             let filteredList = restaurantList.filter(
               (res) => res.info.avgRating > 4
             );
-            setrestaurantList(filteredList);
+            setfilteredrestaurants(filteredList);
           }}
         >
           Top rated Restaurants
         </button>
       </div>
       <div className="res-container">
-        {filteredrestaurants.map((resturant, index) => (
-          <CardCompoent key={resturant.info.id} resdata={resturant} />
+        {filteredrestaurants.map((restaurant, index) => (
+          <CardCompoent key={restaurant.info.id} resdata={restaurant} />
         ))}
       </div>
     </div>
