@@ -21,7 +21,7 @@ const Body = () => {
 
     // Make sure the data you're accessing exists
     const restaurants =
-      jsonData?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
+      jsonData?.data?.cards?.[3]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants || [];
 
     setrestaurantList(restaurants);
