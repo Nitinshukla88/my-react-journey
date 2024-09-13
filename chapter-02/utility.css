@@ -102,3 +102,13 @@ input{
 .filter{
     display: flex;
 }
+
+.res-menu-img{
+  height: 250px;
+  width: 250px;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}

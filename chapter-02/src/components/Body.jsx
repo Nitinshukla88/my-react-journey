@@ -1,6 +1,7 @@
 import CardCompoent from "./CardComponent";
 import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [restaurantList, setrestaurantList] = useState([]); // Local state variable
@@ -14,7 +15,7 @@ const Body = () => {
 
   const fetchData = async () => {
     let data = await fetch(
-      "https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.87560&lng=80.91150&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.87560&lng=80.91150&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const jsonData = await data.json();
     console.log(jsonData);
@@ -71,7 +72,7 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredrestaurants.map((restaurant, index) => (
-          <CardCompoent key={restaurant.info.id} resdata={restaurant} />
+          <Link key = {restaurant.info.id} to={"/restaurants/"+restaurant.info.id}><CardCompoent resdata={restaurant} /></Link>
         ))}
       </div>
     </div>
