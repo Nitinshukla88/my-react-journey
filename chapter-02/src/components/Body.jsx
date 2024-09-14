@@ -27,7 +27,7 @@ const Body = () => {
     console.log(jsonData);
 
     const restaurants =
-      jsonData?.data?.cards?.[3]?.card?.card?.gridElements?.infoWithStyle
+      jsonData?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants || [];
     setRestaurantList(restaurants);
     setFilteredRestaurants(restaurants.slice(0, 4)); // Start with first 4 restaurants
