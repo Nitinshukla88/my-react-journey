@@ -4,14 +4,20 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Body = () => {
-  const [restaurantList, setrestaurantList] = useState([]); // Local state variable
-  const [filteredrestaurants, setfilteredrestaurants] = useState([]);
-  console.log(restaurantList);
-  const [searchText, setSearchText] = useState([""]);
+  const [restaurantList, setRestaurantList] = useState([]); // Local state variable
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [restaurantList, filteredRestaurants]);
 
   const fetchData = async () => {
     let data = await fetch(
@@ -20,13 +26,22 @@ const Body = () => {
     const jsonData = await data.json();
     console.log(jsonData);
 
-    // Make sure the data you're accessing exists
     const restaurants =
       jsonData?.data?.cards?.[3]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants || [];
+    setRestaurantList(restaurants);
+    setFilteredRestaurants(restaurants.slice(0, 4)); // Start with first 4 restaurants
+  };
 
-    setrestaurantList(restaurants);
-    setfilteredrestaurants(restaurants);
+  const handleScroll = () => {
+    if (
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 100
+    ) {
+      const newLength = filteredRestaurants.length + 4;
+      if (newLength <= restaurantList.length) {
+        setFilteredRestaurants(restaurantList.slice(0, newLength)); // Add 4 more restaurants
+      }
+    }
   };
 
   return restaurantList.length === 0 ? (
@@ -40,19 +55,15 @@ const Body = () => {
             placeholder="Enter keyword"
             className="search-box"
             value={searchText}
-            onChange={(e) => {
-              setSearchText(e.target.value);
-            }}
+            onChange={(e) => setSearchText(e.target.value)}
           />
           <button
             className="search-btn"
             onClick={() => {
-              let filteredVenues = restaurantList.filter((eachItem) => {
-                if (eachItem?.info?.cuisines?.includes(searchText) === true) {
-                  return eachItem;
-                }
-              });
-              setfilteredrestaurants(filteredVenues);
+              let filteredVenues = restaurantList.filter((eachItem) =>
+                eachItem?.info?.cuisines?.includes(searchText)
+              );
+              setFilteredRestaurants(filteredVenues);
             }}
           >
             Search
@@ -64,15 +75,20 @@ const Body = () => {
             let filteredList = restaurantList.filter(
               (res) => res.info.avgRating > 4
             );
-            setfilteredrestaurants(filteredList);
+            setFilteredRestaurants(filteredList);
           }}
         >
           Top rated Restaurants
         </button>
       </div>
       <div className="res-container">
-        {filteredrestaurants.map((restaurant, index) => (
-          <Link key = {restaurant.info.id} to={"/restaurants/"+restaurant.info.id}><CardCompoent resdata={restaurant} /></Link>
+        {filteredRestaurants.map((restaurant) => (
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+          >
+            <CardCompoent resdata={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
