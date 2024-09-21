@@ -30,7 +30,7 @@ const Body = () => {
       jsonData?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants || [];
     setRestaurantList(restaurants);
-    setFilteredRestaurants(restaurants.slice(0, 4)); // Start with first 4 restaurants
+    setFilteredRestaurants(restaurants.slice(0, 12)); // Start with first 4 restaurants
   };
 
   const handleScroll = () => {

@@ -39,8 +39,8 @@
 
 .res-container {
   margin: 10px;
-  /* display: flex; 
-  flex-wrap: wrap; */
+  display: flex; 
+  flex-wrap: wrap;
  }
 
 .rest-card {
