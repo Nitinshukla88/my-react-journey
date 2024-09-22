@@ -6,28 +6,31 @@ class UserClass extends React.Component { // That's how class based components a
     super(props); // Here props is received as a object
 
     this.state = {
-      count : 0,
+       name : "dummy", 
+       location : "dum-loation"
     }
 
   }
 
+  async componentDidMount(){
+    const data = await fetch("https://api.github.com/users/Nitinshukla88");
+    const jsonData = await data.json();
+    this.setState({
+      name : jsonData.name,
+      location : jsonData.location
+    })
+  }
+
   render() {
 
-    const { name , location } = this.props; // Destructuring the props object
+    const { name , location } = this.state; // Destructuring the props object
 
-    const {count} = this.state;
 
     return (
       <div>
         <h2>{name}</h2>
         <h2>UserID: Nitinshukla88</h2>
         <h3>Location : {location}</h3>
-        <h1>Count = {count}</h1>
-        <button onClick={() =>{
-          this.setState({
-            count : this.state.count +1
-          })
-        }}>Click to increase count</button>
       </div>
     );
   }
