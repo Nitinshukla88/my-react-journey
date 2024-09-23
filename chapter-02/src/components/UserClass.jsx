@@ -7,7 +7,8 @@ class UserClass extends React.Component { // That's how class based components a
 
     this.state = {
        name : "dummy", 
-       location : "dum-loation"
+       location : "dum-loation",
+       avtar : "https://dummy-avtar.com"
     }
 
   }
@@ -15,20 +16,23 @@ class UserClass extends React.Component { // That's how class based components a
   async componentDidMount(){
     const data = await fetch("https://api.github.com/users/Nitinshukla88");
     const jsonData = await data.json();
+    console.log()
     this.setState({
       name : jsonData.name,
-      location : jsonData.location
+      location : jsonData.location,
+      avtar : jsonData.avatar_url
     })
   }
 
   render() {
 
-    const { name , location } = this.state; // Destructuring the props object
+    const { name , location , avtar} = this.state; // Destructuring the props object
 
 
     return (
       <div>
         <h2>{name}</h2>
+        <img src= {avtar}></img>
         <h2>UserID: Nitinshukla88</h2>
         <h3>Location : {location}</h3>
       </div>
