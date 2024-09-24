@@ -1,21 +1,26 @@
-import { useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
-import { CDN_URL, MENU_API} from "../utils/constants";
+import { CDN_URL } from "../utils/constants";
+import useRestaurantMenuData from "../utils/useRestaurantMenuData";
 
 const RestaurantMenuCard = () => {
-  const [resinfo, setresinfo] = useState(null);
+  // const [resinfo, setresinfo] = useState(null); 
   const {id} = useParams();
+  console.log(id);
 
-  useEffect(() => {
-    fetchMenuData();
-  }, []);
+  const resinfo = useRestaurantMenuData(id); // For acheiving SRP and modularity, we are making this CustomHook.
 
-  const fetchMenuData = async () => {
-    const menuData = await fetch(MENU_API+id);
-    const json = await menuData.json();
-    setresinfo(json.data);
-  };
+
+  console.log(resinfo);
+  // useEffect(() => {
+  //   fetchMenuData();
+  // }, []);
+
+  // const fetchMenuData = async () => {
+  //   const menuData = await fetch(MENU_API+id);
+  //   const json = await menuData.json();
+  //   setresinfo(json.data);
+  // };
 
   if(resinfo == null) return  <Shimmer />;
 
