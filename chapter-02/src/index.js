@@ -8,15 +8,14 @@ import Error from "./components/Error";
 import RestaurantMenuCard from "./components/RestaurantMenuCard";
 import { createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
 import { lazy, Suspense } from "react";
-
+import Shimmer from "./components/Shimmer";
 // This is a food ordering website resembling zomato and swiggy made with react..
 
 //<---------------------------------------------------------------------------------------->
 
 
-const About = lazy(() => {
-  import("./components/About");
-})
+const About = lazy(() => import("./components/About")); // same you can do for as many components acc to projects need
+
 
 
 const Applayout = () => {
@@ -39,7 +38,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: (<Suspense fallback = {<h1>Loading......</h1>}><About/></Suspense>)
+        element: (<Suspense fallback = {<Shimmer/>}><About/></Suspense>)
       },
       {
         path: "/contact",
