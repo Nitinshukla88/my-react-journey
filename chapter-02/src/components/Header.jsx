@@ -10,11 +10,11 @@ export const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="header">
-      <div className="logo">
+    <div className="flex justify-between">
+      <div>
         <img
           src={LOGO_URL}
-          className="logo-img"
+          className="h-48 w-48"
         ></img>
       </div>
       <div className="nav-items">
