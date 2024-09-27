@@ -10,24 +10,24 @@ export const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between bg-slate-300">
       <div>
         <img
           src={LOGO_URL}
-          className="h-48 w-48"
+          className="h-32 w-32"
         ></img>
       </div>
       <div className="nav-items">
-        <ul>
-          <li>{onlineStatus ? "Online-😊" : "Offine-😢"}</li>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About us</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-          <li>Help</li>
-          <li>Cart</li>
+        <ul className="flex m-4 p-4">
+          <li className="mx-4 my-2 text-lg font-semibold text-purple-900">{onlineStatus ? "Online-😊" : "Offine-😢"}</li>
+          <li className="mx-4 my-2 text-lg font-semibold text-purple-900"><Link to="/">Home</Link></li>
+          <li className="mx-4 my-2 text-lg font-semibold text-purple-900"><Link to="/about">About us</Link></li>
+          <li className="mx-4 my-2 text-lg font-semibold text-purple-900"><Link to="/contact">Contact</Link></li>
+          <li className="mx-4 my-2 text-lg font-semibold text-purple-900">Help</li>
+          <li className="mx-4 my-2 text-lg font-semibold text-purple-900">Cart</li>
           <li onClick={()=>{
             authBtn == "Sign in"? setauthBtn("Sign out"): setauthBtn("Sign in");
-          }} className="button-login">{authBtn}</li>
+          }} className="mx-4 my-2 text-lg font-semibold text-purple-900">{authBtn}</li>
         </ul>
       </div>
     </div>
