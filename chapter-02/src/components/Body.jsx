@@ -1,4 +1,4 @@
-import CardCompoent from "./CardComponent";
+import CardComponent, {withPromotedLabel} from "./CardComponent";
 import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -7,6 +7,8 @@ const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]); // Local state variable
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  const EnhancedCard = withPromotedLabel(CardComponent);
 
   useEffect(() => {
     fetchData();
@@ -88,7 +90,7 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
           >
-            <CardCompoent resdata={restaurant} />
+            {restaurant.info.isOpen ? (<EnhancedCard resdata={restaurant}/>) : (<CardComponent resdata={restaurant}/>)}
           </Link>
         ))}
       </div>

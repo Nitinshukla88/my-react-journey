@@ -1,7 +1,8 @@
 import {CDN_URL} from "../utils/constants"
 
-const CardCompoent = (props) => {
+const CardComponent = (props) => {
     const { resdata } = props;
+    console.log(resdata);
     const { name, cuisines, avgRating, costForTwo } = resdata.info;
     return (
       <div className="h-90 w-60 m-3 p-4 border-2 border-solid border-black">
@@ -17,4 +18,18 @@ const CardCompoent = (props) => {
     );
   };
 
-export default CardCompoent;
+
+// We pass the props in higher order components using spread operator. 
+
+export const withPromotedLabel = (CardCompoent) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-black m-2 p-2 rounded-lg text-white">Promoted and Open</label>
+        <CardCompoent {...props}/> 
+      </div>
+    )
+  }
+}
+
+export default CardComponent;
