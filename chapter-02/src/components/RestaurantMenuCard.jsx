@@ -6,10 +6,8 @@ import useRestaurantMenuData from "../utils/useRestaurantMenuData";
 const RestaurantMenuCard = () => {
   // const [resinfo, setresinfo] = useState(null); 
   const {id} = useParams();
-  console.log(id);
 
   const resinfo = useRestaurantMenuData(id); // For acheiving SRP and modularity, we are making this CustomHook.
-
 
   console.log(resinfo);
   // useEffect(() => {
