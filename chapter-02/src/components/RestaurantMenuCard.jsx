@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import { CDN_URL } from "../utils/constants";
 import useRestaurantMenuData from "../utils/useRestaurantMenuData";
+import CategoryComponent from "./CategoryComponent";
 
 const RestaurantMenuCard = () => {
   // const [resinfo, setresinfo] = useState(null); 
@@ -30,10 +31,12 @@ const RestaurantMenuCard = () => {
   const { name, cuisines, costForTwoMessage, areaName, cloudinaryImageId } = resinfo?.cards?.[2]?.card?.card?.info || {};
   
   return (
-    <div className="res-menu">
-      <h1>{name}</h1>
+    <div className="flex flex-col justify-center items-center">
+      <h1 className = "font-bold my-3 text-2xl">{name}</h1>
       <h3>{areaName}</h3>
-      {categories.map}
+      {categories.map((category) => {
+        return <CategoryComponent data = {category?.card?.card}/>
+      })}
     </div>
   );
 };
