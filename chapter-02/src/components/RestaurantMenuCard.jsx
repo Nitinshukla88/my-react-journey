@@ -19,6 +19,11 @@ const RestaurantMenuCard = () => {
   //   const json = await menuData.json();
   //   setresinfo(json.data);
   // };
+  console.log(resinfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+  const categories = resinfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter( (c) => {
+    return c.card?.card?.["@type"] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory";
+  });
+  console.log(categories);
 
   if(resinfo == null) return  <Shimmer />;
 
@@ -27,9 +32,8 @@ const RestaurantMenuCard = () => {
   return (
     <div className="res-menu">
       <h1>{name}</h1>
-      <img src = {CDN_URL+cloudinaryImageId} alt="" className="res-menu-img" />
-      <h2>{cuisines.join(", ")} - {costForTwoMessage}</h2>
       <h3>{areaName}</h3>
+      {categories.map}
     </div>
   );
 };
