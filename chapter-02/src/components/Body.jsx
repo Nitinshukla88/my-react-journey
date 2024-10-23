@@ -1,6 +1,7 @@
+import UserContext from "../utils/UserContext";
 import CardComponent, {withPromotedLabel} from "./CardComponent";
 import Shimmer from "./Shimmer";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 const Body = () => {
@@ -9,6 +10,8 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   const EnhancedCard = withPromotedLabel(CardComponent);
+
+  const { loggedInUser, setuserName } = useContext(UserContext);
 
   useEffect(() => {
     fetchData();
@@ -85,7 +88,7 @@ const Body = () => {
         </button>
         <div>
           <label htmlFor="" className="text-purple-600 font-bold ml-3">UserName : </label>
-          <input type="text" className="h-10 px-3 border-black border-2" />
+          <input type="text" className="h-10 px-3 border-black border-2" onChange={(e) => {setuserName(e.target.value)}}/>
         </div>
       </div>
       <div className="res-container flex flex-wrap">
