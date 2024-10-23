@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import {Header} from "./components/Header"; // Here you can write Header.jsx also that'll work fine.
 import Body from "./components/Body";
@@ -9,6 +9,8 @@ import RestaurantMenuCard from "./components/RestaurantMenuCard";
 import { createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Shimmer from "./components/Shimmer";
+import UserContext from "./utils/UserContext";
+import User from "./components/User";
 // This is a food ordering website resembling zomato and swiggy made with react..
 
 //<---------------------------------------------------------------------------------------->
@@ -19,11 +21,26 @@ const About = lazy(() => import("./components/About")); // same you can do for a
 
 
 const Applayout = () => {
+
+  const [userName, setuserName] = useState();
+
+  useEffect(() => {
+    const data = {
+      name : "Nitin Shukla", // This is some kind of dummy Data that we got by calling some API. Now using this Data I wanted to change the data of my context.
+    }
+
+    setuserName(data.name);
+  }, []);
+
   return (
-    <div className="outer-cont">
-      <Header />
-      <Outlet/>
-    </div>
+    <UserContext.Provider value={{loggedInUser : userName , setuserName}}>
+      <div className="outer-cont">
+        <UserContext.Provider value = {{loggedInUser : "Elon musk"}}>
+          <Header />
+        </UserContext.Provider>
+        <Outlet/>
+      </div>
+    </UserContext.Provider>
   );
 };
 

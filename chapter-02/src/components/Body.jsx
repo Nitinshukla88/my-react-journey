@@ -83,6 +83,10 @@ const Body = () => {
         >
           Top rated Restaurants
         </button>
+        <div>
+          <label htmlFor="" className="text-purple-600 font-bold ml-3">UserName : </label>
+          <input type="text" className="h-10 px-3 border-black border-2" />
+        </div>
       </div>
       <div className="res-container flex flex-wrap">
         {filteredRestaurants.map((restaurant) => (

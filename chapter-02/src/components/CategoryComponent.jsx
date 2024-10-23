@@ -1,13 +1,11 @@
 import { useState } from "react";
 import CategoryListComponent from "./CategoryListComponent";
 
-const CategoryComponent = ({ data }) => {
+const CategoryComponent = ({ data, showItem, setIndex }) => { // Here we have lifted the state of showItem up to its parent. So Category Component is a cantrolled component. It is cantrolled by it's parent RestaurantMenuCard.
     console.log(data)
 
-    const [showItem, setshowItem] = useState(false);
-
     const handleClick = () => {
-        setshowItem(!showItem);
+        setIndex();
     }
     return (
             <div className = "border-2 border-slate-100 my-3 shadow-lg w-6/12 p-3 flex flex-col bg-slate-50">
