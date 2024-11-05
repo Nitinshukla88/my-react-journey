@@ -4,7 +4,10 @@ const CategoryListComponent = ( { categoryData }) => {
     console.log(categoryData);
     return (
         <div>
-            <span><img src={CDN_URL + categoryData?.imageId} alt="food image" className="h-14 w-14"/></span>
+            <div className="flex">
+                <span><img src={CDN_URL + categoryData?.imageId} alt="food image" className="h-14 w-14"/></span>
+                <button className="m-3 h-8 w-14 bg-black text-white">Add+</button>
+            </div>
             <div className="p-3 border-b-2">
                 <div className="mb-2">
                     <span>{categoryData?.name}</span>
