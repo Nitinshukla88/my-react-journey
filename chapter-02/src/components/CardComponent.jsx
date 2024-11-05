@@ -4,7 +4,6 @@ import UserContext from "../utils/UserContext";
 
 const CardComponent = (props) => {
     const { resdata } = props;
-    console.log(resdata);
 
     const { loggedInUser } = useContext(UserContext);
 
