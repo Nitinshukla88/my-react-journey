@@ -10,6 +10,8 @@ import { createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 import User from "./components/User";
 // This is a food ordering website resembling zomato and swiggy made with react..
 
@@ -33,6 +35,7 @@ const Applayout = () => {
   }, []);
 
   return (
+    <Provider store={appStore}>
     <UserContext.Provider value={{loggedInUser : userName , setuserName}}>
       <div className="outer-cont">
         <UserContext.Provider value = {{loggedInUser : "Elon musk"}}>
@@ -41,6 +44,7 @@ const Applayout = () => {
         <Outlet/>
       </div>
     </UserContext.Provider>
+    </Provider>
   );
 };
 
