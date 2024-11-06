@@ -4,8 +4,6 @@ import { addItem } from "../utils/appStoreSlices/cartSlice";
 
 const CategoryListComponent = ( { categoryData }) => {
 
-    console.log(categoryData);
-
     const dispatch = useDispatch();
     
     const handleAddItem = (data) => {
