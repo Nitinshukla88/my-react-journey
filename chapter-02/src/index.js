@@ -12,7 +12,7 @@ import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
-import User from "./components/User";
+import Cart from "./components/Cart";
 // This is a food ordering website resembling zomato and swiggy made with react..
 
 //<---------------------------------------------------------------------------------------->
@@ -68,6 +68,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurants/:id",
         element: <RestaurantMenuCard/>
+      },
+      {
+        path: "/cart",
+        element: <Cart/>
       }
     ],
     errorElement: <Error/>
