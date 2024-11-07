@@ -91,7 +91,7 @@ const Body = () => {
           <input type="text" className="h-10 px-3 border-black border-2" onChange={(e) => {setuserName(e.target.value)}}/>
         </div>
       </div>
-      <div className="res-container flex flex-wrap">
+      <div className="flex flex-wrap items-center justify-center">
         {filteredRestaurants.map((restaurant) => (
           <Link
             key={restaurant.info.id}
