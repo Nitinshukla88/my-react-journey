@@ -9,7 +9,7 @@ const CardComponent = (props) => {
 
     const { name, cuisines, avgRating, costForTwo } = resdata.info;
     return (
-      <div className="h-94 w-64 m-4 p-4 border-2 border-solid border-black">
+      <div className="h-94 w-64 m-4 p-4 border-2 border-solid border-black bg-gray-200">
         <img
           src={CDN_URL + resdata.info.cloudinaryImageId}
           className="h-56 w-56"
