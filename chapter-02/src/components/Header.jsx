@@ -36,7 +36,7 @@ export const Header = () => {
           <li className="mx-4 my-2 text-lg font-semibold text-purple-900"><Link to="/cart">Cart - ({cartItems.length} items)</Link></li>
           <li onClick={()=>{
             authBtn == "Sign in"? setauthBtn("Sign out"): setauthBtn("Sign in");
-          }} className="mx-4 my-2 text-lg font-semibold text-purple-900">{authBtn}</li>
+          }} className="mx-4 my-2 text-lg font-semibold text-purple-900 cursor-pointer">{authBtn}</li>
           <li className="mx-4 my-2 text-lg font-semibold text-purple-900">User : {loggedInUser}</li>
         </ul>
       </div>
