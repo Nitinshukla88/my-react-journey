@@ -4,6 +4,23 @@ import "@testing-library/jest-dom" // This is how the whole library is imported 
 
 
 describe("These are test cases of Contact page", () => {
+
+    // beforeAll(() => {
+    //     console.log("Runs before all of the test cases");
+    // })
+
+    // beforeEach(() => {
+    //     console.log("Runs before each test case");
+    // })
+
+    // afterAll(() => {
+    //     console.log("Runs after the examination of all the test cases");
+    // })
+
+    // afterEach(() => {
+    //     console.log("Runs after each test case");
+    // })
+
     test("This test should show if the Contact component is loaded or not", () => {
 
         render(<Contact/>)

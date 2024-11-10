@@ -11,7 +11,7 @@ const CategoryListComponent = ( { categoryData }) => {
     }
 
     return (
-        <div>
+        <div data-testid="food-items">
             <div className="flex">
                 <span><img src={CDN_URL + categoryData?.imageId} alt="food image" className="h-14 w-14"/></span>
                 <button className="m-3 h-8 w-14 bg-black text-white" onClick={() => handleAddItem(categoryData)}>Add+</button>

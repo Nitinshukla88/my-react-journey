@@ -13,7 +13,6 @@ const RestaurantMenuCard = () => {
 
   const [showIndex, setShowIndex] = useState(null); // We are changing the state of showIndex from it's children since it is the parent of CategoryComponent.
 
-  console.log(resinfo);
   // useEffect(() => {
   //   fetchMenuData();
   // }, []);
@@ -23,11 +22,11 @@ const RestaurantMenuCard = () => {
   //   const json = await menuData.json();
   //   setresinfo(json.data);
   // };
-  console.log(resinfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+
   const categories = resinfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter( (c) => {
     return c.card?.card?.["@type"] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory";
   });
-  console.log(categories);
+
 
   if(resinfo == null) return  <Shimmer />;
 
